@@ -2,6 +2,7 @@
 #define PLAYSTATE_H
 
 #include "FrameWork/GameState.h"
+#include "Player.h"
 
 class PlayState : public GameState {
 public:
@@ -10,6 +11,8 @@ public:
     void handleInput() override;
     void update() override;
     void draw() override;
+private:
+    Player player;
 };
 
 #endif
