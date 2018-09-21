@@ -17,8 +17,8 @@ class GameState {
 		virtual void draw() = 0;
 
 		float getDeltaTime();
-		virtual bool works() const = 0;
-		virtual std::unique_ptr<GameState> wichChange() const = 0;
+		virtual bool works() const;
+		virtual std::unique_ptr<GameState> wichChange() const;
 
 	private:
 		std::chrono::steady_clock::time_point timePoint;

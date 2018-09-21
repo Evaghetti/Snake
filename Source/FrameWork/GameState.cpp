@@ -19,3 +19,7 @@ float GameState::getDeltaTime() {
 
 	return deltaTime;
 }
+
+std::unique_ptr<GameState> GameState::wichChange() const {
+	return nullptr;
+}
