@@ -5,6 +5,7 @@
 #include "FrameWork/GameObject.h"
 
 #include <SFML/System/Vector2.hpp>
+#include <SFML/Graphics/Transform.hpp>
 
 class SnakeBody : public GameObject {
 public:

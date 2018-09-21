@@ -10,9 +10,12 @@ SnakeBody::SnakeBody(const sf::Vector2f& position, const sf::Vector2f& velocity)
 
     animation.setInterval("cabeca");
 
-    sprite.setPosition(position);
     this->velocity = sf::Vector2f(velocityInicial.x, 0.f);
 
+    sprite.setPosition(position);
+    sprite.setOrigin(8.f, 8.f);
+    sprite.setRotation(90.f);
+    
     tempoPassado = 0.f;
 }
 
@@ -29,7 +32,25 @@ void SnakeBody::update(const float deltaTime) {
         if (input.x != 0 && input.y != 0)
             input.x = 0;
         velocity = sf::Vector2f(velocityInicial.x * input.x, velocityInicial.y * input.y);
+
+        switch(input.x) {
+            case 1:
+                sprite.setRotation(90.f);
+                break;
+            case -1:
+                sprite.setRotation(-90.f);
+                break;
+        }
+        switch(input.y) {
+            case 1:
+                sprite.setRotation(180.f);
+                break;
+            case -1:
+                sprite.setRotation(0.f);
+                break;
+        }
     }
+
     tempoPassado += deltaTime;
     if (tempoPassado >= tempoParaAndar) {
         position += velocity;
