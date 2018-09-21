@@ -1,3 +1,4 @@
 makefile
 Snake
-Images/*.xcf
+Images/Apple.xcf
+Images/Snake.xcf
