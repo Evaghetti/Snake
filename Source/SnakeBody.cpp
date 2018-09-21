@@ -1,8 +1,8 @@
-#include "Player.h"
+#include "SnakeBody.h"
 
 #include <SFML/Window/Keyboard.hpp>
 
-Player::Player(const sf::Vector2f& position, const sf::Vector2f& velocity) : position(position), velocityInicial(velocity), animation("Images/snake.png", 16, 16, 2, 1) {
+SnakeBody::SnakeBody(const sf::Vector2f& position, const sf::Vector2f& velocity) : position(position), velocityInicial(velocity), animation("Images/snake.png", 16, 16, 2, 1) {
     animation.applyTexture(sprite);
 
     animation.addInterval("cabeca", 0, 1);
@@ -16,7 +16,7 @@ Player::Player(const sf::Vector2f& position, const sf::Vector2f& velocity) : pos
     tempoPassado = 0.f;
 }
 
-void Player::update(const float deltaTime) {
+void SnakeBody::update(const float deltaTime) {
     animation.update(deltaTime);
     animation.applyTo(sprite);
 
@@ -40,6 +40,6 @@ void Player::update(const float deltaTime) {
     sprite.setPosition(position);
 }
 
-void Player::draw(sf::RenderTarget& target) {
+void SnakeBody::draw(sf::RenderTarget& target) {
     target.draw(sprite);
 }

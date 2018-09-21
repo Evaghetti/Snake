@@ -1,14 +1,14 @@
-#ifndef PLAYER_H
-#define PLAYER_H
+#ifndef SNAKEBODY_H
+#define SNAKEBODY_H
 
 #include "FrameWork/Animation.h"
 #include "FrameWork/GameObject.h"
 
 #include <SFML/System/Vector2.hpp>
 
-class Player : public GameObject {
+class SnakeBody : public GameObject {
 public:
-    Player(const sf::Vector2f& position, const sf::Vector2f& velocity);
+    SnakeBody(const sf::Vector2f& position, const sf::Vector2f& velocity);
 
     void update(const float deltaTime) override;
     void draw(sf::RenderTarget& target) override;
