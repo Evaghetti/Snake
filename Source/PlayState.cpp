@@ -2,7 +2,7 @@
 
 #include <SFML/Window/Event.hpp>
 
-PlayState::PlayState(sf::RenderWindow* window) : GameState(window), player({50.f, 50.f}) {}
+PlayState::PlayState(sf::RenderWindow* window) : GameState(window), player({50.f, 50.f}, {50.f, 50.f}) {}
 
 void PlayState::handleInput() {
     sf::Event e;
