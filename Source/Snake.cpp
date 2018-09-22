@@ -29,6 +29,11 @@ void Snake::draw(sf::RenderTarget& target) {
     head.draw(target);
 }
 
+void Snake::aumentarCorpo() {
+    corpo.emplace_back(SnakeBody(corpo.back().getPosition(), false));
+    corpo.back().setRotation(corpo[corpo.size() - 2]);
+}
+
 bool Snake::morreu() const {
     for (const auto& it : corpo) {
         if (head.colidiuCom(it) && head.acabouDeMover())

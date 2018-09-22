@@ -14,6 +14,8 @@ public:
     void update(const float deltaTime);
     void draw(sf::RenderTarget& target);
 
+    void aumentarCorpo();
+
     bool morreu() const;
     bool comeu(const GameObject& apple) const;
 private:
