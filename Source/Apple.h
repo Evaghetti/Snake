@@ -16,7 +16,7 @@ public:
 
     void comer();
 private:
-    void respawn(int maxX = 640, int maxY = 640);
+    void respawn(int maxX = 640, int maxY = 480);
 private:
     Animation animation;
     sf::Sprite sprite;
