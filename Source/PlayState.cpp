@@ -17,6 +17,8 @@ void PlayState::update() {
     const float deltaTime = getDeltaTime();
 
     player.update(deltaTime);
+    if (player.comeu(apple)) 
+        apple.comer();
     apple.update(deltaTime);
 }
 

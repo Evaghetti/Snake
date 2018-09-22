@@ -36,3 +36,7 @@ bool Snake::morreu() const {
     }
     return false;
 }
+
+bool Snake::comeu(const GameObject& apple) const {
+    return head.colidiuCom(apple);
+}

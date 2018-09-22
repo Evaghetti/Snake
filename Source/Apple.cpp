@@ -20,6 +20,7 @@ void Apple::update(const float deltaTime) {
     }
 
     sprite.setPosition(position);
+    GameObject::update(deltaTime);
 }
 
 void Apple::draw(sf::RenderTarget& target) {

@@ -15,6 +15,7 @@ public:
     void draw(sf::RenderTarget& target);
 
     bool morreu() const;
+    bool comeu(const GameObject& apple) const;
 private:
     std::vector<SnakeBody> corpo;
     SnakeBody head;
