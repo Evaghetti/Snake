@@ -39,7 +39,9 @@ bool Snake::morreu() const {
         if (head.colidiuCom(it) && head.acabouDeMover())
             return true;
     }
-    return false;
+
+    const sf::Vector2f position = head.getPosition();
+    return position.x < 8.f || position.x >= 640 || position.y < 8.f || position.y >= 480.f;
 }
 
 bool Snake::comeu(const GameObject& apple) const {
