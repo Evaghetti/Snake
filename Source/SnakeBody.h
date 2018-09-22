@@ -22,6 +22,11 @@ public:
 
     bool acabouDeMover() const;
 private:
+    template<typename T>
+    int getSign(T x) {
+        return (T(0) < x) - (x < T(0));
+    }
+private:
     Animation animation;
     sf::Vector2f position, velocityInicial, velocity;
     sf::Sprite sprite;
