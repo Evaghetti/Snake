@@ -1,4 +1,5 @@
 /makefile
 /.vscode/
+/.vscode/*
 /Snake
 /Images/*.xcf
