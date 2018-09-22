@@ -3,12 +3,13 @@
 #include <SFML/Window/Keyboard.hpp>
 
 SnakeBody::SnakeBody(const sf::Vector2f& position, const sf::Vector2f& velocity, bool cabeca) : position(position), velocityInicial(velocity), animation("Images/snake.png", 16, 16, 2, 1) {
-    animation.applyTexture(sprite);
-
     animation.addInterval("cabeca", 0, 1);
     animation.addInterval("corpo", 1, 2);
 
     animation.setInterval((cabeca) ? "cabeca" : "corpo");
+    animation.applyTexture(sprite);
+    animation.applyTo(sprite);
+    
 
     this->velocity = sf::Vector2f(velocityInicial.x, 0.f);
 
@@ -56,11 +57,35 @@ void SnakeBody::update(const float deltaTime) {
         position += velocity;
         
         tempoPassado = 0.f;
+        moveu = true;
     }
+    else
+        moveu = false;
 
     sprite.setPosition(position);
 }
 
 void SnakeBody::draw(sf::RenderTarget& target) {
     target.draw(sprite);
+}
+
+sf::Vector2f SnakeBody::getVelocity() const {
+    return velocity;
+}
+
+sf::Vector2f SnakeBody::getPosition() const {
+    return position;
+}
+
+bool SnakeBody::acabouDeMover() const {
+    return moveu;
+}
+
+void SnakeBody::setRotation(const SnakeBody& snakeBody) {
+    sprite.setRotation(snakeBody.sprite.getRotation());
+}
+
+void SnakeBody::setPosition(const sf::Vector2f& snakeBody) {
+    sprite.setPosition(snakeBody);
+    position = snakeBody;
 }

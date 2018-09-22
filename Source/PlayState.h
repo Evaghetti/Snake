@@ -2,7 +2,7 @@
 #define PLAYSTATE_H
 
 #include "FrameWork/GameState.h"
-#include "SnakeBody.h"
+#include "Snake.h"
 
 class PlayState : public GameState {
 public:
@@ -12,7 +12,7 @@ public:
     void update() override;
     void draw() override;
 private:
-    SnakeBody player;
+    Snake player;
 };
 
 #endif

@@ -13,10 +13,20 @@ public:
 
     void update(const float deltaTime) override;
     void draw(sf::RenderTarget& target) override;
+
+    sf::Vector2f getVelocity() const;
+    sf::Vector2f getPosition() const;
+
+    void setRotation(const SnakeBody& snakeBody);
+    void setPosition(const sf::Vector2f& snakeBody);
+
+    bool acabouDeMover() const;
 private:
     Animation animation;
     sf::Vector2f position, velocityInicial, velocity;
     sf::Sprite sprite;
+
+    bool moveu;
 
     float tempoPassado;
 
