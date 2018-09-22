@@ -70,6 +70,7 @@ void SnakeBody::update(const float deltaTime) {
         moveu = false;
 
     sprite.setPosition(position);
+    GameObject::update(deltaTime);
 }
 
 void SnakeBody::draw(sf::RenderTarget& target) {
