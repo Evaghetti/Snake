@@ -17,12 +17,14 @@ void PlayState::update() {
     const float deltaTime = getDeltaTime();
 
     player.update(deltaTime);
+    apple.update(deltaTime);
 }
 
 void PlayState::draw() {
     window->clear();
 
     player.draw(*window);
+    apple.draw(*window);
 
     window->display();
 }

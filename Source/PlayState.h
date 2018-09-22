@@ -3,6 +3,7 @@
 
 #include "FrameWork/GameState.h"
 #include "Snake.h"
+#include "Apple.h"
 
 class PlayState : public GameState {
 public:
@@ -15,6 +16,7 @@ public:
     bool works() const override;
 private:
     Snake player;
+    Apple apple;
 };
 
 #endif
