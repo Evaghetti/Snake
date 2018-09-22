@@ -11,6 +11,7 @@ animation("Images/apple.png", 16, 16, 1, 1)
     animation.applyTo(sprite);
 
     respawn();
+    GameObject::update(0.f);
 }
 
 void Apple::update(const float deltaTime) {
