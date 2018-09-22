@@ -1,6 +1,7 @@
 #include "Engine.h"
 #include "FrameWork/Manager.h"
 
+#include "MenuState.h"
 #include "PlayState.h"
 
 #include <SFML/Graphics/Image.hpp>
@@ -11,7 +12,7 @@ Engine::Engine(const std::string& nome, int largura, int altura)
 	window.setFramerateLimit(60);
 	window.setVerticalSyncEnabled(true);
 
-	gameState = std::make_unique<PlayState>(&window);
+	gameState = std::make_unique<MenuState>(&window);
 
 	run();
 }
