@@ -23,7 +23,7 @@ void MenuState::handleInput() {
 }
 
 void MenuState::update() {
-    const float deltaTime = getDeltaTime();
+    // const float deltaTime = getDeltaTime();
 }
 
 void MenuState::draw() {
