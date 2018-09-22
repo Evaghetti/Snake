@@ -2,7 +2,7 @@
 
 #include <SFML/Window/Keyboard.hpp>
 
-SnakeBody::SnakeBody(const sf::Vector2f& position, const sf::Vector2f& velocity, bool cabeca) : position(position), velocityInicial(velocity), animation("Images/snake.png", 16, 16, 2, 1) {
+SnakeBody::SnakeBody(const sf::Vector2f& position, const sf::Vector2f& velocity, bool cabeca) : animation("Images/snake.png", 16, 16, 2, 1), position(position), velocityInicial(velocity) {
     animation.addInterval("cabeca", 0, 1);
     animation.addInterval("corpo", 1, 2);
 
