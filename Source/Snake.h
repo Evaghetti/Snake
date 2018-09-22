@@ -13,6 +13,8 @@ public:
 
     void update(const float deltaTime);
     void draw(sf::RenderTarget& target);
+
+    bool morreu() const;
 private:
     std::vector<SnakeBody> corpo;
     SnakeBody head;

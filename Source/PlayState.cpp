@@ -2,7 +2,7 @@
 
 #include <SFML/Window/Event.hpp>
 
-PlayState::PlayState(sf::RenderWindow* window) : GameState(window), player(SnakeBody({40.f, 8.f})) {}
+PlayState::PlayState(sf::RenderWindow* window) : GameState(window), player(SnakeBody({8.f, 8.f})) {}
 
 void PlayState::handleInput() {
     sf::Event e;
@@ -25,4 +25,8 @@ void PlayState::draw() {
     player.draw(*window);
 
     window->display();
+}
+
+bool PlayState::works() const {
+    return GameState::works() && !player.morreu();
 }

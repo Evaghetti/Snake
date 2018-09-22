@@ -5,7 +5,7 @@
 Snake::Snake(const SnakeBody& head, int tamanho) : head(head) {
     const sf::Vector2f headPosition = this->head.getPosition();
     for (int i = 1; i < tamanho; i++) {
-        corpo.emplace_back(SnakeBody(headPosition - sf::Vector2f(16.f * i, 0.f), false));
+        corpo.emplace_back(SnakeBody(headPosition - sf::Vector2f(16.f * i, headPosition.y), false));
         corpo.back().setRotation(head);
     }
 }
@@ -27,4 +27,12 @@ void Snake::draw(sf::RenderTarget& target) {
     for (auto& it : corpo)
         it.draw(target);
     head.draw(target);
+}
+
+bool Snake::morreu() const {
+    for (const auto& it : corpo) {
+        if (head.colidiuCom(it) && head.acabouDeMover())
+            return true;
+    }
+    return false;
 }

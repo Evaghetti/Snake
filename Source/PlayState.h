@@ -11,6 +11,8 @@ public:
     void handleInput() override;
     void update() override;
     void draw() override;
+
+    bool works() const override;
 private:
     Snake player;
 };

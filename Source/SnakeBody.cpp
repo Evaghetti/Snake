@@ -96,4 +96,5 @@ void SnakeBody::setRotation(const SnakeBody& snakeBody) {
 void SnakeBody::setPosition(const sf::Vector2f& snakeBody) {
     sprite.setPosition(snakeBody);
     position = snakeBody;
+    GameObject::update(0.f);
 }
