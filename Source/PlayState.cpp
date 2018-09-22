@@ -2,6 +2,8 @@
 
 #include <SFML/Window/Event.hpp>
 
+#include <algorithm>
+
 PlayState::PlayState(sf::RenderWindow* window) : GameState(window), player(SnakeBody({8.f, 8.f})) {}
 
 void PlayState::handleInput() {
@@ -18,8 +20,14 @@ void PlayState::update() {
 
     player.update(deltaTime);
     if (player.comeu(apple)) {
-        apple.respawn();
         player.aumentarCorpo();
+
+        const auto& corpo = player.getCorpo();
+        do {
+            apple.respawn();
+        } while(player.comeu(apple) || std::any_of(corpo.begin(), corpo.end(), [&](auto a) {
+            return a.colidiuCom(apple);
+        }));
     }
 }
 

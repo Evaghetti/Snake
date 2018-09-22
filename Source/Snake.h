@@ -18,6 +18,8 @@ public:
 
     bool morreu() const;
     bool comeu(const GameObject& apple) const;
+
+    const std::vector<SnakeBody>& getCorpo() const;
 private:
     std::vector<SnakeBody> corpo;
     SnakeBody head;

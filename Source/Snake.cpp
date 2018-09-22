@@ -45,3 +45,7 @@ bool Snake::morreu() const {
 bool Snake::comeu(const GameObject& apple) const {
     return head.colidiuCom(apple);
 }
+
+const std::vector<SnakeBody>& Snake::getCorpo() const {
+    return corpo;
+}
