@@ -29,30 +29,29 @@ void SnakeBody::update(const float deltaTime) {
         sf::Keyboard::isKeyPressed(sf::Keyboard::S) - sf::Keyboard::isKeyPressed(sf::Keyboard::W)
     );
 
-    if (input != sf::Vector2i(0, 0)) {
+    if (input != sf::Vector2i(0, 0) && getSign(input.x) != getSign(velocity.x) && getSign(input.y) != getSign(velocity.y)) {
         if (input.x != 0 && input.y != 0)
             input.x = 0;
 
-        if (getSign(input.x) != getSign(velocity.x) && getSign(input.y) != getSign(velocity.y)) {
-            velocity = sf::Vector2f(velocityInicial.x * input.x, velocityInicial.y * input.y);
+        velocity = sf::Vector2f(velocityInicial.x * input.x, velocityInicial.y * input.y);
          
-            switch(input.x) {
-                case 1:
-                    sprite.setRotation(90.f);
-                    break;
-                case -1:
-                    sprite.setRotation(-90.f);
-                    break;
-            }
-            switch(input.y) {
-                case 1:
-                    sprite.setRotation(180.f);
-                    break;
-                case -1:
-                    sprite.setRotation(0.f);
-                    break;
-            }
+        switch(input.x) {
+            case 1:
+                sprite.setRotation(90.f);
+                break;
+            case -1:
+                sprite.setRotation(-90.f);
+                break;
         }
+        switch(input.y) {
+            case 1:
+                sprite.setRotation(180.f);
+                break;
+            case -1:
+                sprite.setRotation(0.f);
+                break;
+        }
+        
     }
 
     tempoPassado += deltaTime;
