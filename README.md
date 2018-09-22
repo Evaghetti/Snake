@@ -14,7 +14,7 @@
   Básicamente, a FrameWork ainda é muito rústica, ela tem muitas coisas que ainda precisam ser adicionadas, como mais Widgets(GUI), e com esse projeto eu pretendo fazer isso e quando a mesma tiver mais pronta irei fazer tbm um repositório pra ela.
 </p>
 <h1>
-   Snake-Legacu
+   Snake-Legacy
 </h1>
 <p>
   Como eu disse, essa é a terceira vez que eu fiz esse, o código da primeira infelizmente eu perdi, mas o segundo está ainda num repositório da miha conta, e lá vai ficar. Querendo ou não aquele projeto faz parte da minha história enquanto eu aprendia a programar, tanto conceitos básicos de programação como Orientação a objetos quanto jogos, então eu n vou ter coragem de apagar ele, contudo aquele repositório deve ser ignorado pois ele n reflete mais a minha forma de programar.
