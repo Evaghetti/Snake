@@ -5,7 +5,7 @@
 Snake::Snake(const SnakeBody& head, int tamanho) : head(head) {
     const sf::Vector2f headPosition = this->head.getPosition();
     for (int i = 1; i < tamanho; i++) {
-        corpo.emplace_back(SnakeBody(headPosition - sf::Vector2f(16.f * i, headPosition.y), false));
+        corpo.emplace_back(SnakeBody(headPosition - sf::Vector2f(16.f * i, 0.f), false));
         corpo.back().setRotation(head);
     }
 }

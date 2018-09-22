@@ -4,7 +4,7 @@
 
 #include <algorithm>
 
-PlayState::PlayState(sf::RenderWindow* window) : GameState(window), player(SnakeBody({8.f, 8.f})) {}
+PlayState::PlayState(sf::RenderWindow* window) : GameState(window), player(SnakeBody({640.f / 2.f - 8.f, 480.f / 2 - 8.f})) {}
 
 void PlayState::handleInput() {
     sf::Event e;
