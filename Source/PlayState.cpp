@@ -18,10 +18,9 @@ void PlayState::update() {
 
     player.update(deltaTime);
     if (player.comeu(apple)) {
-        apple.comer();
+        apple.respawn();
         player.aumentarCorpo();
     }
-    apple.update(deltaTime);
 }
 
 void PlayState::draw() {

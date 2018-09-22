@@ -13,9 +13,7 @@ public:
 
     void update(const float deltaTime) override;
     void draw(sf::RenderTarget& target) override;
-
-    void comer();
-private:
+    
     void respawn(int maxX = 640, int maxY = 480);
 private:
     Animation animation;
