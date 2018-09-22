@@ -28,7 +28,7 @@ private:
     }
 private:
     Animation animation;
-    sf::Vector2f position, velocityInicial, velocity;
+    sf::Vector2f velocityInicial, velocity;
     sf::Sprite sprite;
 
     bool moveu;

@@ -2,7 +2,13 @@
 
 #include <SFML/Window/Keyboard.hpp>
 
-SnakeBody::SnakeBody(const sf::Vector2f& position, bool cabeca) : animation("Images/snake.png", 16, 16, 2, 1), position(position), velocityInicial({16.f, 16.f}) {
+SnakeBody::SnakeBody(const sf::Vector2f& position, bool cabeca) : 
+
+GameObject(position, sf::FloatRect(position, {16.f, 16.f}), {-8.f, -8.f}), 
+animation("Images/snake.png", 16, 16, 2, 1), 
+velocityInicial({16.f, 16.f}) 
+
+{
     animation.addInterval("cabeca", 0, 1);
     animation.addInterval("corpo", 1, 2);
 
@@ -10,7 +16,6 @@ SnakeBody::SnakeBody(const sf::Vector2f& position, bool cabeca) : animation("Ima
     animation.applyTexture(sprite);
     animation.applyTo(sprite);
     
-
     this->velocity = sf::Vector2f(velocityInicial.x, 0.f);
 
     sprite.setPosition(position);
