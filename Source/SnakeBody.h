@@ -9,7 +9,7 @@
 
 class SnakeBody : public GameObject {
 public:
-    SnakeBody(const sf::Vector2f& position, const sf::Vector2f& velocity, bool cabeca = true);
+    SnakeBody(const sf::Vector2f& position, bool cabeca = true);
 
     void update(const float deltaTime) override;
     void draw(sf::RenderTarget& target) override;
