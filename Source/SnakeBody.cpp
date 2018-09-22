@@ -2,20 +2,20 @@
 
 #include <SFML/Window/Keyboard.hpp>
 
-SnakeBody::SnakeBody(const sf::Vector2f& position, const sf::Vector2f& velocity) : position(position), velocityInicial(velocity), animation("Images/snake.png", 16, 16, 2, 1) {
+SnakeBody::SnakeBody(const sf::Vector2f& position, const sf::Vector2f& velocity, bool cabeca) : position(position), velocityInicial(velocity), animation("Images/snake.png", 16, 16, 2, 1) {
     animation.applyTexture(sprite);
 
     animation.addInterval("cabeca", 0, 1);
     animation.addInterval("corpo", 1, 2);
 
-    animation.setInterval("cabeca");
+    animation.setInterval((cabeca) ? "cabeca" : "corpo");
 
     this->velocity = sf::Vector2f(velocityInicial.x, 0.f);
 
     sprite.setPosition(position);
     sprite.setOrigin(8.f, 8.f);
     sprite.setRotation(90.f);
-    
+
     tempoPassado = 0.f;
 }
 
