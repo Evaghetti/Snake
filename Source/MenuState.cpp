@@ -9,12 +9,14 @@
 
 MenuState::MenuState(sf::RenderWindow* window) : GameState(window) {
 
-    auto temp = std::make_unique<TextBox>("Snake", sf::FloatRect(180.f, -150.f, 100.f, 100.f));
+    auto temp = std::make_unique<TextBox>("Snake", sf::FloatRect(180.f, 0.f, 300.f, 125.f));
 
-    temp->setFonte("Fonts/fonte.ttf", 100);
+    temp->setFonte("Fonts/fonte.ttf");
+
+    temp->setTextSettings({5.5f, 3.f}, sf::Color::White, sf::Color::Black);
 
     gui.emplace_back(std::move(temp));
-    gui.emplace_back(std::make_unique<Button>(sf::FloatRect(320.f, 240.f, 100.f, 50.f)));
+    gui.emplace_back(std::make_unique<Button>(sf::FloatRect(240.f, 240.f, 180.f, 50.f)));
 }
 
 void MenuState::handleInput() {

@@ -68,12 +68,12 @@ void TextBox::setOutlineColor(const sf::Color& novaCor, float tamanho) {
     formato->setOutlineThickness(tamanho);
 }
 
-void TextBox::setBoxColor(const sf::Color novaCor) {
+void TextBox::setBoxColor(const sf::Color& novaCor) {
     formato->setFillColor(novaCor);
 }
 
-void TextBox::setTextSettings(float tamanho, const sf::Color novaCorFonte, const sf::Color novaCorSub, float tamanhoSub) {
-    jaEscrito.setScale(jaEscrito.getScale() * tamanho);
+void TextBox::setTextSettings(const sf::Vector2f& tamanho, const sf::Color& novaCorFonte, const sf::Color& novaCorSub, float tamanhoSub) {
+    jaEscrito.setScale(tamanho);
     jaEscrito.setFillColor(novaCorFonte);
     jaEscrito.setOutlineColor(novaCorSub);
     jaEscrito.setOutlineThickness(tamanhoSub);

@@ -19,8 +19,8 @@ public:
     void setFonte(std::string caminhoFonte, unsigned tamanho = 30u);
 
     void setOutlineColor(const sf::Color& novaCor, float tamanho = 1.f);
-    void setBoxColor(const sf::Color novaCor);
-    void setTextSettings(float scale, const sf::Color novaCorFonte = sf::Color::White, const sf::Color novaCorSub = sf::Color::Transparent, float tamanhoSub = 1.f);
+    void setBoxColor(const sf::Color& novaCor);
+    void setTextSettings(const sf::Vector2f& scale, const sf::Color& novaCorFonte = sf::Color::White, const sf::Color& novaCorSub = sf::Color::Transparent, float tamanhoSub = 1.f);
 
     void setMensagem(std::string mensagem);
 private:
