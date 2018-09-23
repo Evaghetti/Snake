@@ -5,17 +5,25 @@
 
 #include <iostream>
 
-Button::Button(sf::FloatRect dimensions, sf::Color corInativo, sf::Color corHover, sf::Color corSelecionado) :
+Button::Button(std::string mensagem, sf::FloatRect dimensions, sf::Color corInativo, sf::Color corHover, sf::Color corSelecionado) :
 
 Widget(std::make_unique<sf::RectangleShape>(sf::Vector2f(dimensions.width, dimensions.height))),
 corInativo(corInativo),
 corHover(corHover),
-corSelecionado(corSelecionado)
+corSelecionado(corSelecionado),
+mensagem(mensagem, dimensions)
 
 {
     this->corAtual = corInativo;
+    this->mensagem.setFonte("Fonts/fonte.ttf");
+    this->mensagem.setTextSettings({1.f, 1.f}, sf::Color::Black, sf::Color::White, 0.2f);
 
     formato->setPosition(dimensions.left, dimensions.top);
+}
+
+void Button::draw(sf::RenderTarget& target) {
+    Widget::draw(target);
+    mensagem.draw(target);
 }
 
 void Button::update(const float deltaTime) {
@@ -26,6 +34,7 @@ void Button::update(const float deltaTime) {
     else
         corAtual = corInativo;
     
+    mensagem.update(deltaTime);
     formato->setFillColor(corAtual);
 }
 

@@ -3,13 +3,17 @@
 
 #include "Widget.h"
 
+#include "TextBox.h"
+
 class Button : public Widget {
 public:
-    Button(sf::FloatRect dimensions, 
+    Button(std::string mensagem, sf::FloatRect dimensions, 
         sf::Color corInativo = sf::Color::White, 
         sf::Color corHover = {25, 25, 25}, 
         sf::Color corSelecionado = sf::Color::Black
     );
+
+    void draw(sf::RenderTarget& target) override;
 
     void update(const float deltaTime = 0.f) override;
 	void update(const sf::Keyboard::Key keyPressed) override;
@@ -23,6 +27,7 @@ private:
     bool hovering, used, ativo;
 
     const sf::Color corInativo, corHover, corSelecionado;
+    TextBox mensagem;
     sf::Color corAtual;
 };
 

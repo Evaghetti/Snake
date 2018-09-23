@@ -16,7 +16,7 @@ MenuState::MenuState(sf::RenderWindow* window) : GameState(window) {
     temp->setTextSettings({5.5f, 3.f}, sf::Color::White, sf::Color::Black);
 
     gui.emplace_back(std::move(temp));
-    gui.emplace_back(std::make_unique<Button>(sf::FloatRect(240.f, 240.f, 180.f, 50.f)));
+    gui.emplace_back(std::make_unique<Button>("Novo Jogo", sf::FloatRect(240.f, 240.f, 180.f, 50.f)));
 }
 
 void MenuState::handleInput() {
