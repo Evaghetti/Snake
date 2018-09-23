@@ -20,7 +20,11 @@ public:
 
 	void setAtivo();
 	void setAtivo(bool ativo);
+
 	bool taAtivo() const;
+
+	virtual bool podeSerUsado() const;
+    virtual bool foiUsado() const;
 protected:
 	std::unique_ptr<sf::Shape> formato;
 private:

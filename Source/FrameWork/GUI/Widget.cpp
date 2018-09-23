@@ -20,6 +20,9 @@ void Widget::setAtivo(bool ativo) {
     this->ativo = ativo;
 }
 
+bool Widget::podeSerUsado() const {return true;}
+bool Widget::foiUsado() const {return true;}
+
 bool Widget::taAtivo() const {
     return ativo;
 }

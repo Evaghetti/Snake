@@ -17,8 +17,8 @@ public:
 
     void setHover();
 
-    bool podeSerUsado() const;
-    bool foiUsado() const;
+    bool podeSerUsado() const override;
+    bool foiUsado() const override;
 private:
     bool hovering, used, ativo;
 
