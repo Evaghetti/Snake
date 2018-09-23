@@ -4,6 +4,7 @@
 #include "FrameWork/GameState.h"
 
 #include "FrameWork/GUI/Button.h"
+#include "FrameWork/GUI/TextBox.h"
 
 #include <SFML/Graphics/RenderWindow.hpp>
 
@@ -19,6 +20,7 @@ public:
     std::unique_ptr<GameState> wichChange() const override;
 private:
     Button teste;
+    TextBox teste2;
 };
 
 #endif

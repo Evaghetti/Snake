@@ -4,7 +4,16 @@
 
 #include <SFML/Window/Event.hpp>
 
-MenuState::MenuState(sf::RenderWindow* window) : GameState(window), teste({0.f, 0.f, 100.f, 100.f}) {}
+MenuState::MenuState(sf::RenderWindow* window) : 
+
+GameState(window),
+teste({0.f, 0.f, 100.f, 100.f}), 
+teste2("Snake snakeado", {0.f, 150.f, 100.f, 100.f})
+
+{
+    teste2.setFonte("Fonts/fonte.ttf");
+    teste2.setOutlineColor(sf::Color::Red, 2.f);
+}
 
 void MenuState::handleInput() {
     sf::Event e;
@@ -28,14 +37,16 @@ void MenuState::handleInput() {
 }
 
 void MenuState::update() {
-    // const float deltaTime = getDeltaTime();
+    const float deltaTime = getDeltaTime();
     teste.update();
+    teste2.update(deltaTime);
 }
 
 void MenuState::draw() {
     window->clear(sf::Color::Green);
 
     teste.draw(*window);
+    teste2.draw(*window);
 
     window->display();
 }
