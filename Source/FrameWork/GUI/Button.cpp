@@ -39,8 +39,6 @@ void Button::update(const sf::Vector2f& mousePosition) {
     hovering = formato->getGlobalBounds().contains(mousePosition);
     used = hovering && sf::Mouse::isButtonPressed(sf::Mouse::Left);
 
-    std::cout << mousePosition.x << ' ' << mousePosition.y << std::endl;
-
     update();
 }
 
