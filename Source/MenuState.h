@@ -3,10 +3,11 @@
 
 #include "FrameWork/GameState.h"
 
-#include "FrameWork/GUI/Button.h"
-#include "FrameWork/GUI/TextBox.h"
+#include "FrameWork/GUI/Widget.h"
 
 #include <SFML/Graphics/RenderWindow.hpp>
+
+#include <vector>
 
 class MenuState : public GameState {
 public:
@@ -19,8 +20,7 @@ public:
     bool works() const override;
     std::unique_ptr<GameState> wichChange() const override;
 private:
-    Button teste;
-    TextBox teste2;
+    std::vector<std::unique_ptr<Widget>> gui;
 };
 
 #endif
