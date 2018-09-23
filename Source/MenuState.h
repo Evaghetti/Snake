@@ -3,6 +3,8 @@
 
 #include "FrameWork/GameState.h"
 
+#include "FrameWork/GUI/Button.h"
+
 #include <SFML/Graphics/RenderWindow.hpp>
 
 class MenuState : public GameState {
@@ -16,7 +18,7 @@ public:
     bool works() const override;
     std::unique_ptr<GameState> wichChange() const override;
 private:
-    bool sair;
+    Button teste;
 };
 
 #endif
