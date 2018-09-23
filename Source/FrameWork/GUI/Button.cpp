@@ -18,7 +18,7 @@ corSelecionado(corSelecionado)
     formato->setPosition(dimensions.left, dimensions.top);
 }
 
-void Button::update() {
+void Button::update(const float deltaTime) {
     if (hovering)
         corAtual = corHover;
     else if (used)

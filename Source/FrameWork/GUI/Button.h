@@ -11,7 +11,7 @@ public:
         sf::Color corSelecionado = sf::Color::Black
     );
 
-    void update() override;
+    void update(const float deltaTime = 0.f) override;
 	void update(const sf::Keyboard::Key keyPressed) override;
     void update(const sf::Vector2f& mousePosition) override;
 
