@@ -16,7 +16,7 @@ public:
     bool works() const override;
 private:
     Snake player;
-    Apple apple;
+    std::vector<Apple> apples;
 };
 
 #endif
