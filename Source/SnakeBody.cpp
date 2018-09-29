@@ -60,6 +60,9 @@ void SnakeBody::update(const float deltaTime) {
     }
 
     tempoPassado += deltaTime;
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+        tempoPassado *= 2.f;
+
     if (tempoPassado >= tempoParaAndar) {
         position += velocity;
         
