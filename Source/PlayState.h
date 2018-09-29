@@ -14,6 +14,7 @@ public:
     void draw() override;
 
     bool works() const override;
+    std::unique_ptr<GameState> wichChange() const override;
 private:
     Snake player;
     std::vector<Apple> apples;

@@ -1,5 +1,7 @@
 #include "PlayState.h"
 
+#include "MenuState.h"
+
 #include <SFML/Window/Event.hpp>
 
 #include <algorithm>
@@ -48,4 +50,8 @@ void PlayState::draw() {
 
 bool PlayState::works() const {
     return GameState::works() && !player.morreu();
+}
+
+std::unique_ptr<GameState> PlayState::wichChange() const {
+    return std::make_unique<MenuState>(window);
 }
