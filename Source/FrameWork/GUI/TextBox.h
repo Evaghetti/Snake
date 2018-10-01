@@ -20,7 +20,7 @@ public:
 
     void setOutlineColor(const sf::Color& novaCor, float tamanho = 1.f);
     void setBoxColor(const sf::Color& novaCor);
-    void setTextSettings(const sf::Vector2f& scale, const sf::Color& novaCorFonte = sf::Color::White, const sf::Color& novaCorSub = sf::Color::Transparent, float tamanhoSub = 1.f);
+    void setTextSettings(const sf::Color& novaCorFonte = sf::Color::White, unsigned tamanhoFonte = 30U, const sf::Color& novaCorSub = sf::Color::Transparent, float tamanhoSub = 1.f);
 
     void setMensagem(std::string mensagem);
 private:
