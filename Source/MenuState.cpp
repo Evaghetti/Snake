@@ -1,6 +1,7 @@
 #include "MenuState.h"
 
 #include "PlayState.h"
+#include "RankState.h"
 
 #include "FrameWork/GUI/Button.h"
 #include "FrameWork/GUI/TextBox.h"
@@ -16,7 +17,8 @@ MenuState::MenuState(sf::RenderWindow& window) : GameState(window) {
 
     gui.emplace_back(std::move(temp));
     gui.emplace_back(std::make_unique<Button>("Novo Jogo", sf::FloatRect(240.f, 240.f, 180.f, 50.f)));
-    gui.emplace_back(std::make_unique<Button>("Sair", sf::FloatRect(240.f, 300.f, 180.f, 50.f)));
+    gui.emplace_back(std::make_unique<Button>("Ranking", sf::FloatRect(240.f, 300.f, 180.f, 50.f)));
+    gui.emplace_back(std::make_unique<Button>("Sair", sf::FloatRect(240.f, 360.f, 180.f, 50.f)));
 }
 
 void MenuState::handleInput() {
@@ -67,5 +69,7 @@ bool MenuState::works() const {
 std::unique_ptr<GameState> MenuState::wichChange() const {
     if (gui[1]->foiUsado())
         return std::make_unique<PlayState>(window);
+    else if (gui[2]->foiUsado())
+        return std::make_unique<RankState>(window);
     return nullptr;
 }
