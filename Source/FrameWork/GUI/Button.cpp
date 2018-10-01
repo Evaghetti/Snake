@@ -1,5 +1,7 @@
 #include "Button.h"
 
+#include "../Manager.h"
+
 #include <SFML/Graphics/RectangleShape.hpp>
 #include <SFML/Window/Mouse.hpp>
 
@@ -11,19 +13,26 @@ Widget(std::make_unique<sf::RectangleShape>(sf::Vector2f(dimensions.width, dimen
 corInativo(corInativo),
 corHover(corHover),
 corSelecionado(corSelecionado),
-mensagem(mensagem, dimensions)
+texto(mensagem, *fonte)
 
 {
     this->corAtual = corInativo;
-    this->mensagem.setFonte("Fonts/fonte.ttf");
-    this->mensagem.setTextSettings({1.f, 1.f}, sf::Color::Black, sf::Color::White, 0.2f);
+
+    fonte = FontManager::carregar("Fonts/fonte.ttf");
+
+    texto.setFont(*fonte);
+    texto.setPosition(dimensions.left, dimensions.top);
+    texto.setFillColor(sf::Color::Black);
+    texto.setOutlineColor(sf::Color::White);
+    texto.setOutlineThickness(1.f);
 
     formato->setPosition(dimensions.left, dimensions.top);
 }
 
 void Button::draw(sf::RenderTarget& target) {
     Widget::draw(target);
-    mensagem.draw(target);
+
+    target.draw(texto);
 }
 
 void Button::update(const float deltaTime) {
@@ -33,8 +42,7 @@ void Button::update(const float deltaTime) {
         corAtual = corSelecionado;
     else
         corAtual = corInativo;
-    
-    mensagem.update(deltaTime);
+
     formato->setFillColor(corAtual);
 }
 
@@ -53,6 +61,14 @@ void Button::update(const sf::Vector2f& mousePosition) {
 
 void Button::setHover() {
     hovering = !hovering;
+}
+
+void Button::setTextSettings(const sf::Color& corTexto, unsigned tamanhoFonte, const sf::Color& corSublinhado, float tamanhoSublinhado) {
+    texto.setFillColor(corTexto);
+    texto.setOutlineColor(corSublinhado);
+
+    texto.setCharacterSize(tamanhoFonte);
+    texto.setOutlineThickness(tamanhoSublinhado);
 }
 
 bool Button::podeSerUsado() const {
