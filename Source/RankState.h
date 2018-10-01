@@ -17,7 +17,8 @@ public:
 
     bool works() const override;
     std::unique_ptr<GameState> wichChange() const override;
-
+private:
+    std::string lerArquivo() const;
 private:
     std::vector<std::unique_ptr<Widget>> gui;
 };

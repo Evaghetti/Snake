@@ -5,6 +5,7 @@
 #include <SFML/Window/Event.hpp>
 
 #include <algorithm>
+#include <fstream>
 
 PlayState::PlayState(sf::RenderWindow& window) : GameState(window), player(SnakeBody({640.f / 2.f - 8.f, 480.f / 2 - 8.f})) {
     for (int i = 0; i < 5; i++)
@@ -61,5 +62,11 @@ bool PlayState::works() const {
 }
 
 std::unique_ptr<GameState> PlayState::wichChange() const {
+    std::ofstream arquivo("data", std::ios::binary | std::ios::app);
+
+    unsigned tamanho = player.getCorpo().size() + 1;
+
+    arquivo.write(reinterpret_cast<char*>(&tamanho), sizeof(unsigned));
+
     return std::make_unique<RankState>(window);
 }
