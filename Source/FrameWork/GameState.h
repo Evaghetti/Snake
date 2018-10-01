@@ -9,8 +9,7 @@
 
 class GameState {
 	public:
-		GameState(sf::RenderWindow* window);
-		virtual ~GameState();
+		GameState(sf::RenderWindow& window);
 
 		virtual void handleInput() = 0;
 		virtual void update() = 0;
@@ -23,7 +22,7 @@ class GameState {
 	private:
 		std::chrono::steady_clock::time_point timePoint;
 	protected:
-		sf::RenderWindow* window;
+		sf::RenderWindow& window;
 };
 
 #endif

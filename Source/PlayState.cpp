@@ -6,7 +6,7 @@
 
 #include <algorithm>
 
-PlayState::PlayState(sf::RenderWindow* window) : GameState(window), player(SnakeBody({640.f / 2.f - 8.f, 480.f / 2 - 8.f})) {
+PlayState::PlayState(sf::RenderWindow& window) : GameState(window), player(SnakeBody({640.f / 2.f - 8.f, 480.f / 2 - 8.f})) {
     for (int i = 0; i < 5; i++)
         apples.emplace_back(Apple());
 }
@@ -14,9 +14,9 @@ PlayState::PlayState(sf::RenderWindow* window) : GameState(window), player(Snake
 void PlayState::handleInput() {
     sf::Event e;
 
-    while (window->pollEvent(e)) {
+    while (window.pollEvent(e)) {
         if (e.type == sf::Event::Closed)
-            window->close();
+            window.close();
     }
 }
 
@@ -47,13 +47,13 @@ void PlayState::update() {
 }
 
 void PlayState::draw() {
-    window->clear();
+    window.clear();
 
-    player.draw(*window);
+    player.draw(window);
     for (auto& it : apples)
-        it.draw(*window);
+        it.draw(window);
 
-    window->display();
+    window.display();
 }
 
 bool PlayState::works() const {

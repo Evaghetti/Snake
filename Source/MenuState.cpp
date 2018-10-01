@@ -7,7 +7,7 @@
 
 #include <SFML/Window/Event.hpp>
 
-MenuState::MenuState(sf::RenderWindow* window) : GameState(window) {
+MenuState::MenuState(sf::RenderWindow& window) : GameState(window) {
     auto temp = std::make_unique<TextBox>("Snake", sf::FloatRect(180.f, -75.f, 300.f, 125.f));
 
     temp->setFonte("Fonts/fonte.ttf");
@@ -22,10 +22,10 @@ MenuState::MenuState(sf::RenderWindow* window) : GameState(window) {
 void MenuState::handleInput() {
     sf::Event e;
 
-    while (window->pollEvent(e)) {
+    while (window.pollEvent(e)) {
         switch (e.type) {
             case sf::Event::Closed:
-                window->close();
+                window.close();
                 break;
             case sf::Event::KeyPressed:
                 for (auto &it : gui)
@@ -34,7 +34,7 @@ void MenuState::handleInput() {
             case sf::Event::MouseButtonPressed:
             case sf::Event::MouseMoved:
                 for (auto& it : gui)
-                    it->update(window->mapPixelToCoords(sf::Mouse::getPosition(*window)));
+                    it->update(window.mapPixelToCoords(sf::Mouse::getPosition(window)));
                 break;
 
             default: continue;
@@ -50,12 +50,12 @@ void MenuState::update() {
 }
 
 void MenuState::draw() {
-    window->clear(sf::Color::Green);
+    window.clear(sf::Color::Green);
 
     for (auto& it : gui)
-        it->draw(*window);
+        it->draw(window);
 
-    window->display();
+    window.display();
 }
 
 bool MenuState::works() const {

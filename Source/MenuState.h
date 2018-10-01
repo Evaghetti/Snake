@@ -11,7 +11,7 @@
 
 class MenuState : public GameState {
 public:
-    MenuState(sf::RenderWindow* window);
+    MenuState(sf::RenderWindow& window);
 
     void handleInput() override;
     void update() override;

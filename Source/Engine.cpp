@@ -12,7 +12,7 @@ Engine::Engine(const std::string& nome, int largura, int altura)
 	window.setFramerateLimit(60);
 	window.setVerticalSyncEnabled(true);
 
-	gameState = std::make_unique<MenuState>(&window);
+	gameState = std::make_unique<MenuState>(window);
 
 	run();
 }

@@ -1,15 +1,11 @@
 #include "GameState.h"
 
-GameState::GameState(sf::RenderWindow* window) : window(window) {
+GameState::GameState(sf::RenderWindow& window) : window(window) {
 	timePoint = std::chrono::steady_clock::now();
 }
 
-GameState::~GameState() {
-	window = nullptr;
-}
-
 bool GameState::works() const {
-	return window->isOpen();
+	return window.isOpen();
 }
 
 float GameState::getDeltaTime() {

@@ -7,7 +7,7 @@
 
 class PlayState : public GameState {
 public:
-    PlayState(sf::RenderWindow* window);
+    PlayState(sf::RenderWindow& window);
 
     void handleInput() override;
     void update() override;
