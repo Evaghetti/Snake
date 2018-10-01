@@ -6,6 +6,7 @@
 
 #include <SFML/Window/Event.hpp>
 
+#include <iostream>
 #include <algorithm>
 #include <fstream>
 #include <vector>
@@ -79,14 +80,14 @@ std::string RankState::lerArquivo() const {
     std::string ret;
     unsigned valorAtual;
 
-    while (!arquivo.eof()) {
-        arquivo.read(reinterpret_cast<char*>(&valorAtual), sizeof(unsigned));
-
-        pontos.push_back(valorAtual);
+    if (arquivo.is_open()) {
+        while (arquivo.read(reinterpret_cast<char*>(&valorAtual), sizeof(unsigned)))
+            pontos.push_back(valorAtual);
     }
-    
+
     std::sort(pontos.rbegin(), pontos.rend());
-    for (auto it = pontos.begin(); it != pontos.begin() + 5; it++)
-        ret.append("NOME\t" + std::to_string(*it) + "\n");
+    pontos.resize(5);
+    for (auto &it : pontos)
+        ret.append("NOME\t" + std::to_string(it) + "\n");
     return ret;
 }
