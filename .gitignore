@@ -3,3 +3,4 @@
 /.vscode/*
 /Snake
 /Images/*.xcf
+/*.o
