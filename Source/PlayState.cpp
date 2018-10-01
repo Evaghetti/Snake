@@ -67,6 +67,7 @@ std::unique_ptr<GameState> PlayState::wichChange() const {
     unsigned tamanho = player.getCorpo().size() + 1;
 
     arquivo.write(reinterpret_cast<char*>(&tamanho), sizeof(unsigned));
+    arquivo.close();
 
     return std::make_unique<RankState>(window);
 }
