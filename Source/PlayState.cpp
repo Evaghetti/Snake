@@ -1,6 +1,6 @@
 #include "PlayState.h"
 
-#include "MenuState.h"
+#include "RankState.h"
 
 #include <SFML/Window/Event.hpp>
 
@@ -61,5 +61,5 @@ bool PlayState::works() const {
 }
 
 std::unique_ptr<GameState> PlayState::wichChange() const {
-    return std::make_unique<MenuState>(window);
+    return std::make_unique<RankState>(window);
 }
