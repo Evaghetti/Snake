@@ -21,7 +21,7 @@ void Widget::setAtivo(bool ativo) {
 }
 
 bool Widget::podeSerUsado() const {return true;}
-bool Widget::foiUsado() const {return true;}
+bool Widget::foiUsado() const {return false;}
 
 bool Widget::taAtivo() const {
     return ativo;

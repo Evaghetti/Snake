@@ -8,7 +8,6 @@
 #include <SFML/Window/Event.hpp>
 
 MenuState::MenuState(sf::RenderWindow* window) : GameState(window) {
-
     auto temp = std::make_unique<TextBox>("Snake", sf::FloatRect(180.f, -75.f, 300.f, 125.f));
 
     temp->setFonte("Fonts/fonte.ttf");
@@ -17,6 +16,7 @@ MenuState::MenuState(sf::RenderWindow* window) : GameState(window) {
 
     gui.emplace_back(std::move(temp));
     gui.emplace_back(std::make_unique<Button>("Novo Jogo", sf::FloatRect(240.f, 240.f, 180.f, 50.f)));
+    gui.emplace_back(std::make_unique<Button>("Sair", sf::FloatRect(240.f, 300.f, 180.f, 50.f)));
 }
 
 void MenuState::handleInput() {
@@ -59,11 +59,13 @@ void MenuState::draw() {
 }
 
 bool MenuState::works() const {
-    return GameState::works() && !gui.back()->foiUsado();
+    return GameState::works() && !std::any_of(gui.begin(), gui.end(), [](const auto& it) {
+        return it->foiUsado();
+    });
 }
 
 std::unique_ptr<GameState> MenuState::wichChange() const {
-    if (gui.back()->foiUsado())
+    if (gui[1]->foiUsado())
         return std::make_unique<PlayState>(window);
     return nullptr;
 }
