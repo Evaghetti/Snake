@@ -56,7 +56,8 @@ void SnakeBody::update(const float deltaTime) {
                 sprite.setRotation(0.f);
                 break;
         }
-        
+
+        tempoPassado = tempoParaAndar - deltaTime;
     }
 
     tempoPassado += deltaTime;
