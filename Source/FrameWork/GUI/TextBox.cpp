@@ -92,7 +92,7 @@ void TextBox::split(std::string frase) {
     std::string buffer;
     palavras.clear();
 
-    while (ss >> buffer)
+    while (std::getline(ss, buffer, ' '))
         palavras.push_back(buffer);
 }
 

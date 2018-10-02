@@ -19,7 +19,7 @@ RankState::RankState(sf::RenderWindow& window, bool adcionar) : GameState(window
 
     gui.emplace_back(std::move(temp));
 
-    temp = std::make_unique<TextBox>(lerArquivo(), sf::FloatRect(240.f, 100.f, 400.f, 380.f));
+    temp = std::make_unique<TextBox>(lerArquivo(), sf::FloatRect(265.f, 100.f, 400.f, 380.f), false, .025f);
     temp->setFonte("Fonts/fonte.ttf");
     temp->setTextSettings(sf::Color::White, 30, sf::Color::Black);
 
