@@ -57,7 +57,8 @@ void SnakeBody::update(const float deltaTime) {
                 break;
         }
 
-        tempoPassado = tempoParaAndar - deltaTime;
+        if (tempoPassado + deltaTime < tempoParaAndar)
+            tempoPassado = tempoParaAndar - deltaTime;
     }
 
     tempoPassado += deltaTime;
