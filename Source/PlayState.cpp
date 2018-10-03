@@ -35,7 +35,7 @@ fundo(sf::Quads, 6000)
         if (((i / 4) * 16) % 656 == 0 && i > 0)
             row++;
     }
-    texturaFundo = TextureManager::carregar("Images/Grama.png");
+    texturaFundo = TextureManager::carregar("Images/grama.png");
 }
 
 void PlayState::handleInput() {
