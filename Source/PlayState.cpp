@@ -1,5 +1,6 @@
 #include "PlayState.h"
 
+#include  "FrameWork/Manager.h"
 #include "RankState.h"
 
 #include <SFML/Window/Event.hpp>
@@ -7,9 +8,34 @@
 #include <algorithm>
 #include <fstream>
 
-PlayState::PlayState(sf::RenderWindow& window) : GameState(window), player(SnakeBody({640.f / 2.f - 8.f, 480.f / 2 - 8.f})) {
+PlayState::PlayState(sf::RenderWindow& window) 
+: 
+
+GameState(window), 
+player(SnakeBody({640.f / 2.f - 8.f, 480.f / 2 - 8.f})),
+fundo(sf::Quads, 6000)
+
+{
     for (int i = 0; i < 5; i++)
         apples.emplace_back(Apple());
+
+    float row = 0.f;
+    for (unsigned i = 0; i < fundo.getVertexCount(); i += 4) {
+        
+        fundo[i].position = sf::Vector2f(float(((i / 4) * 16) % 656), row * 16.f);
+        fundo[i + 1].position = sf::Vector2f(float(((i / 4) * 16) % 656) + 16.f + 16.f, row * 16.f);
+        fundo[i + 2].position = sf::Vector2f(float(((i / 4) * 16) % 656) + 16.f + 16.f, row * 16.f + 16.f);
+        fundo[i + 3].position = sf::Vector2f(float(((i / 4) * 16) % 656), row * 16.f + 16.f);
+
+        fundo[i].texCoords = sf::Vector2f(0.f, 0.f);
+        fundo[i + 1].texCoords = sf::Vector2f(16.f, 0.f);
+        fundo[i + 2].texCoords = sf::Vector2f(16.f, 16.f);
+        fundo[i + 3].texCoords = sf::Vector2f(0.f, 16.f);
+
+        if (((i / 4) * 16) % 656 == 0 && i > 0)
+            row++;
+    }
+    texturaFundo = TextureManager::carregar("Images/Grama.png");
 }
 
 void PlayState::handleInput() {
@@ -50,6 +76,7 @@ void PlayState::update() {
 void PlayState::draw() {
     window.clear();
 
+    window.draw(fundo, texturaFundo.get());
     player.draw(window);
     for (auto& it : apples)
         it.draw(window);

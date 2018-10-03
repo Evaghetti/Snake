@@ -5,6 +5,8 @@
 #include "Snake.h"
 #include "Apple.h"
 
+#include <SFML/Graphics/VertexArray.hpp>
+
 class PlayState : public GameState {
 public:
     PlayState(sf::RenderWindow& window);
@@ -18,6 +20,9 @@ public:
 private:
     Snake player;
     std::vector<Apple> apples;
+
+    sf::VertexArray fundo;
+    std::shared_ptr<sf::Texture> texturaFundo;
 };
 
 #endif
