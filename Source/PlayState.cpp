@@ -1,6 +1,6 @@
 #include "PlayState.h"
 
-#include  "FrameWork/Manager.h"
+#include "FrameWork/Manager.h"
 #include "RankState.h"
 
 #include <SFML/Window/Event.hpp>

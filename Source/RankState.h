@@ -21,6 +21,9 @@ private:
     std::string lerArquivo() const;
 private:
     std::vector<std::unique_ptr<Widget>> gui;
+
+    sf::VertexArray fundo;
+    std::shared_ptr<sf::Texture> texturaFundo;
 };
 
 #endif // RANKSTATE_H

@@ -5,10 +5,17 @@
 
 #include "FrameWork/GUI/Button.h"
 #include "FrameWork/GUI/TextBox.h"
+#include "FrameWork/Manager.h"
 
 #include <SFML/Window/Event.hpp>
 
-MenuState::MenuState(sf::RenderWindow& window) : GameState(window) {
+MenuState::MenuState(sf::RenderWindow& window) 
+
+: 
+GameState(window),
+fundo(sf::Quads, 6000)
+
+{
     auto temp = std::make_unique<TextBox>("Snake", sf::FloatRect(180.f, -75.f, 300.f, 125.f));
 
     temp->setFonte("Fonts/fonte.ttf");
@@ -19,6 +26,24 @@ MenuState::MenuState(sf::RenderWindow& window) : GameState(window) {
     gui.emplace_back(std::make_unique<Button>("Novo Jogo", sf::FloatRect(240.f, 240.f, 180.f, 50.f)));
     gui.emplace_back(std::make_unique<Button>("Ranking", sf::FloatRect(240.f, 300.f, 180.f, 50.f)));
     gui.emplace_back(std::make_unique<Button>("Sair", sf::FloatRect(240.f, 360.f, 180.f, 50.f)));
+
+    float row = 0.f;
+    for (unsigned i = 0; i < fundo.getVertexCount(); i += 4) {
+        
+        fundo[i].position = sf::Vector2f(float(((i / 4) * 16) % 656), row * 16.f);
+        fundo[i + 1].position = sf::Vector2f(float(((i / 4) * 16) % 656) + 16.f + 16.f, row * 16.f);
+        fundo[i + 2].position = sf::Vector2f(float(((i / 4) * 16) % 656) + 16.f + 16.f, row * 16.f + 16.f);
+        fundo[i + 3].position = sf::Vector2f(float(((i / 4) * 16) % 656), row * 16.f + 16.f);
+
+        fundo[i].texCoords = sf::Vector2f(0.f, 0.f);
+        fundo[i + 1].texCoords = sf::Vector2f(16.f, 0.f);
+        fundo[i + 2].texCoords = sf::Vector2f(16.f, 16.f);
+        fundo[i + 3].texCoords = sf::Vector2f(0.f, 16.f);
+
+        if (((i / 4) * 16) % 656 == 0 && i > 0)
+            row++;
+    }
+    texturaFundo = TextureManager::carregar("Images/grama.png");
 }
 
 void MenuState::handleInput() {
@@ -52,8 +77,9 @@ void MenuState::update() {
 }
 
 void MenuState::draw() {
-    window.clear(sf::Color::Green);
+    window.clear();
 
+    window.draw(fundo, texturaFundo.get());
     for (auto& it : gui)
         it->draw(window);
 

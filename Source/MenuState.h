@@ -21,6 +21,9 @@ public:
     std::unique_ptr<GameState> wichChange() const override;
 private:
     std::vector<std::unique_ptr<Widget>> gui;
+
+    sf::VertexArray fundo;
+    std::shared_ptr<sf::Texture> texturaFundo;
 };
 
 #endif
