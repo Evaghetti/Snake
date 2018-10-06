@@ -9,9 +9,10 @@
 #include <SFML/Window/Event.hpp>
 
 #include <iostream>
+#include <functional>
 #include <algorithm>
 #include <fstream>
-#include <vector>
+#include <map>
 
 RankState::RankState(sf::RenderWindow& window, bool adcionar, int pontos) 
 
@@ -96,7 +97,8 @@ void RankState::update() {
         InputBox* entrada = dynamic_cast<InputBox*>(gui.back().get());
 
         if (entrada->foiUsado()) {
-            std::cout << entrada->getString() << std::endl;
+            escrerArquivo(entrada->getString());
+            lerArquivo();
 
             gui.pop_back();
         }
@@ -127,18 +129,34 @@ std::unique_ptr<GameState> RankState::wichChange() const {
 
 std::string RankState::lerArquivo() const {
     std::ifstream arquivo("data", std::ios::binary);
-    std::vector<unsigned> pontos;
+    std::map<int, std::string, std::greater<int>> rank;
     std::string ret;
-    unsigned valorAtual;
 
     if (arquivo.is_open()) {
-        while (arquivo.read(reinterpret_cast<char*>(&valorAtual), sizeof(unsigned)))
-            pontos.push_back(valorAtual);
-    }
+        std::string nome;
+        int pontos;
 
-    std::sort(pontos.rbegin(), pontos.rend());
-    pontos.resize(5);
-    for (auto &it : pontos)
-        ret.append("NOME\t" + std::to_string(it) + "\n");
+        while (std::getline(arquivo, nome)) {
+            arquivo.read(reinterpret_cast<char*>(&pontos), sizeof(pontos));
+
+            rank.insert({pontos, nome});
+        }
+        
+        arquivo.close();
+    }
+    
+    while (rank.size() > 5)
+        rank.erase(--rank.end());
+    for (auto &it : rank)
+        ret.append(it.second + "\t" + std::to_string(it.first) + "\n");
     return ret;
+}
+
+void RankState::escrerArquivo(const std::string& nome) const {
+    std::ofstream arquivo("data", std::ios::binary | std::ios::app);
+
+    arquivo << nome << std::endl;
+    arquivo.write(reinterpret_cast<const char*>(&pontosPraAdd), sizeof(pontosPraAdd));
+
+    arquivo.close();
 }

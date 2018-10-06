@@ -19,6 +19,7 @@ public:
     std::unique_ptr<GameState> wichChange() const override;
 private:
     std::string lerArquivo() const;
+    void escrerArquivo(const std::string& nome) const;
 private:
     std::vector<std::unique_ptr<Widget>> gui;
 
