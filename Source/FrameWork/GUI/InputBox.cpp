@@ -19,26 +19,32 @@ tamanhoMaximo(tamanhoMaximo)
 
     selecionado = false;
 
-    textoNaTela.setString(std::wstring(tamanhoMaximo, 'A'));
+    textoNaTela.setString(std::wstring(tamanhoMaximo + 1, 'A'));
     while (!cabeDentro()) {
         unsigned tamanhoAtual = textoNaTela.getCharacterSize();
 
         textoNaTela.setCharacterSize(tamanhoAtual - 1);
     }
+
+    textoNaTela.setPosition(dimensions.left, dimensions.top);
     textoNaTela.setString("");
+    textoNaTela.setColor(sf::Color::Black);
 }
 
 void InputBox::update(const float deltaTime) {
     if (!cabeDentro())
-        digitado.unget();
+        digitado.pop_back();
 
-    textoNaTela.setString(digitado.str());
+    textoNaTela.setString(digitado);
 }
 
 void InputBox::update(const sf::Keyboard::Key keyPressed, const wchar_t valor) {
-    if (selecionado && valor != -1) 
-        std::wcout << "Você digitou " << valor << "!" << std::endl;
-    
+    if (selecionado && valor != -1 && valor != 0x08) 
+        digitado += valor;
+    else if (keyPressed == sf::Keyboard::BackSpace) {
+        if (digitado.length() > 0) 
+            digitado.pop_back();
+    }
     update();
 }
 
@@ -56,7 +62,7 @@ void InputBox::draw(sf::RenderTarget& target) {
 }
 
 std::wstring InputBox::getString() {
-    digitado.str(L"");
+    digitado.clear();
     return L"NOME";
 }
 

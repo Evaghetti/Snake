@@ -7,7 +7,7 @@
 #include <SFML/Graphics/Font.hpp>
 
 #include <memory>
-#include <sstream>
+#include <string>
 
 class InputBox : public Widget {
 public:
@@ -23,7 +23,7 @@ public:
 private:
     bool cabeDentro() const;
 private:
-    std::wstringstream digitado;
+    std::wstring digitado;
 
     std::shared_ptr<sf::Font> fonte;
     sf::Text textoNaTela;
