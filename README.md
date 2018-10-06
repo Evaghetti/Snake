@@ -20,4 +20,4 @@
   Como eu disse, essa é a terceira vez que eu fiz esse, o código da primeira infelizmente eu perdi, mas o segundo está ainda num repositório da miha conta, e lá vai ficar. Querendo ou não aquele projeto faz parte da minha história enquanto eu aprendia a programar, tanto conceitos básicos de programação como Orientação a objetos quanto jogos, então eu n vou ter coragem de apagar ele, contudo aquele repositório deve ser ignorado pois ele n reflete mais a minha forma de programar.
 Link Do reposítorio antigo: https://github.com/Evaghetti/Snake-Legacy
 </p>
-<img src="https://scontent.fpoa21-1.fna.fbcdn.net/v/t1.15752-9/42300506_458645934642466_9217328704336691200_n.png?_nc_cat=111&oh=b84fa374b178e5c9b870834da6c70368&oe=5C1842DF"/>
+<img src="https://scontent.fpoa21-1.fna.fbcdn.net/v/t1.15752-9/43318862_1825882407460749_666777738375331840_n.png?_nc_cat=105&oh=6da246b5f412d0cae41ea6501beb8a97&oe=5C19A6DD"/>
