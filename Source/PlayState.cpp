@@ -89,12 +89,5 @@ bool PlayState::works() const {
 }
 
 std::unique_ptr<GameState> PlayState::wichChange() const {
-    std::ofstream arquivo("data", std::ios::binary | std::ios::app);
-
-    unsigned tamanho = player.getCorpo().size() + 1;
-
-    arquivo.write(reinterpret_cast<char*>(&tamanho), sizeof(unsigned));
-    arquivo.close();
-
-    return std::make_unique<RankState>(window);
+    return std::make_unique<RankState>(window, true, player.getCorpo().size() + 1);
 }

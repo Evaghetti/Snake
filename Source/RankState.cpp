@@ -1,5 +1,6 @@
 #include "RankState.h"
 
+#include "FrameWork/GUI/InputBox.h"
 #include "FrameWork/GUI/TextBox.h"
 #include "FrameWork/GUI/Button.h"
 #include "FrameWork/Manager.h"
@@ -12,11 +13,14 @@
 #include <fstream>
 #include <vector>
 
-RankState::RankState(sf::RenderWindow& window, bool adcionar) 
+RankState::RankState(sf::RenderWindow& window, bool adcionar, int pontos) 
 
-: 
+:
+
 GameState(window),
-fundo(sf::Quads, 6000)
+fundo(sf::Quads, 6000),
+pontosPraAdd(pontos),
+adcionando(adcionar)
 
 {
     auto temp = std::make_unique<TextBox>("Ranking", sf::FloatRect(240.f, -100.f, 100.f, 150.f));
@@ -32,6 +36,9 @@ fundo(sf::Quads, 6000)
 
     gui.emplace_back(std::move(temp));
     gui.emplace_back(std::make_unique<Button>("Voltar", sf::FloatRect(540.f, 430.f, 100.f, 50.f), sf::Color::Red, sf::Color(200, 0, 0)));
+
+    if (adcionar) 
+        gui.emplace_back(std::make_unique<InputBox>(sf::FloatRect(200, 220, 220, 50), 10));
 
     float row = 0.f;
     for (unsigned i = 0; i < fundo.getVertexCount(); i += 4) {
@@ -86,9 +93,13 @@ void RankState::draw() {
     window.clear();
 
     window.draw(fundo, texturaFundo.get());
-    for (auto& it : gui)
-        it->draw(window);
 
+    if (gui.size() <= 3) {
+        for (auto& it : gui)
+            it->draw(window);
+    }
+    else
+        gui.back()->draw(window);
     window.display();
 }
 

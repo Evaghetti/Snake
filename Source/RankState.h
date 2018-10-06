@@ -9,7 +9,7 @@
 
 class RankState : public GameState {
 public:
-    RankState(sf::RenderWindow& window, bool adcionar = false);
+    RankState(sf::RenderWindow& window, bool adcionar = false, int pontos = 0);
 
     void handleInput() override;
     void update() override;
@@ -24,6 +24,8 @@ private:
 
     sf::VertexArray fundo;
     std::shared_ptr<sf::Texture> texturaFundo;
+    const int pontosPraAdd;
+    bool adcionando;
 };
 
 #endif // RANKSTATE_H
