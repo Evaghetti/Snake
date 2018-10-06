@@ -63,15 +63,6 @@ void TextBox::setFonte(std::string caminhoFonte, unsigned tamanho) {
     jaEscrito.setCharacterSize(tamanho);
 }
 
-void TextBox::setOutlineColor(const sf::Color& novaCor, float tamanho) {
-    formato->setOutlineColor(novaCor);
-    formato->setOutlineThickness(tamanho);
-}
-
-void TextBox::setBoxColor(const sf::Color& novaCor) {
-    formato->setFillColor(novaCor);
-}
-
 void TextBox::setTextSettings(const sf::Color& novaCorFonte, unsigned tamanhoFonte, const sf::Color& novaCorSub, float tamanhoSub) {
     jaEscrito.setCharacterSize(tamanhoFonte);
     jaEscrito.setFillColor(novaCorFonte);

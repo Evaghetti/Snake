@@ -17,7 +17,9 @@ public:
 	virtual void update(const float deltaTime = 0.f) = 0;
 	virtual void update(const sf::Keyboard::Key keyPressed);
 	virtual void update(const sf::Vector2f& mousePosition);
-
+	
+	void setOutlineColor(const sf::Color& novaCor, float tamanho = 1.f);
+    void setBoxColor(const sf::Color& novaCor);
 	void setAtivo();
 	void setAtivo(bool ativo);
 
