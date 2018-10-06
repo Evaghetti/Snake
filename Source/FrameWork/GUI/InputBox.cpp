@@ -17,6 +17,7 @@ tamanhoMaximo(tamanhoMaximo)
     fonte = FontManager::carregar("Fonts/fonte.ttf");
     textoNaTela.setFont(*fonte);
 
+    terminouDigitar = false;
     selecionado = false;
 
     textoNaTela.setString(std::wstring(tamanhoMaximo + 1, 'A'));
