@@ -96,7 +96,7 @@ void RankState::update() {
         InputBox* entrada = dynamic_cast<InputBox*>(gui.back().get());
 
         if (entrada->foiUsado()) {
-            std::wcout << entrada->getString() << std::endl;
+            std::cout << entrada->getString() << std::endl;
 
             gui.pop_back();
         }

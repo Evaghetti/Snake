@@ -39,8 +39,10 @@ void InputBox::update(const float deltaTime) {
 }
 
 void InputBox::update(const sf::Keyboard::Key keyPressed, const wchar_t valor) {
-    if (selecionado && valor != -1 && valor != 0x08) 
-        digitado += valor;
+    if (selecionado && valor != -1 && valor != 0x08) {
+        if (valor <= 127)
+            digitado += static_cast<char>(valor);
+    }
     else if (keyPressed == sf::Keyboard::BackSpace) {
         if (digitado.length() > 0) 
             digitado.pop_back();
@@ -64,8 +66,8 @@ void InputBox::draw(sf::RenderTarget& target) {
     target.draw(textoNaTela);
 }
 
-std::wstring InputBox::getString() {
-    std::wstring ret(digitado);
+std::string InputBox::getString() {
+    std::string ret(digitado);
     digitado.clear();
     terminouDigitar = false;
     return ret;

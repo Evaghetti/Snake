@@ -19,12 +19,12 @@ public:
 
     void draw(sf::RenderTarget& target) override;
 
-    std::wstring getString();
+    std::string getString();
     bool foiUsado() const override;
 private:
     bool cabeDentro() const;
 private:
-    std::wstring digitado;
+    std::string digitado;
 
     std::shared_ptr<sf::Font> fonte;
     sf::Text textoNaTela;
