@@ -28,7 +28,7 @@ tamanhoMaximo(tamanhoMaximo)
 
     textoNaTela.setPosition(dimensions.left, dimensions.top);
     textoNaTela.setString("");
-    textoNaTela.setColor(sf::Color::Black);
+    textoNaTela.setFillColor(sf::Color::Black);
 }
 
 void InputBox::update(const float deltaTime) {
