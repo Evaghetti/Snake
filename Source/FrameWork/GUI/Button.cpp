@@ -27,6 +27,9 @@ texto(mensagem, *fonte)
     texto.setOutlineThickness(1.f);
 
     formato->setPosition(dimensions.left, dimensions.top);
+
+    hovering = false;
+    used = false;
 }
 
 void Button::draw(sf::RenderTarget& target) {
