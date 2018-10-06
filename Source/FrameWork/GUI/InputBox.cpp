@@ -45,6 +45,9 @@ void InputBox::update(const sf::Keyboard::Key keyPressed, const wchar_t valor) {
         if (digitado.length() > 0) 
             digitado.pop_back();
     }
+
+    if (!terminouDigitar)
+        terminouDigitar = keyPressed == sf::Keyboard::Enter;
     update();
 }
 
@@ -62,8 +65,14 @@ void InputBox::draw(sf::RenderTarget& target) {
 }
 
 std::wstring InputBox::getString() {
+    std::wstring ret(digitado);
     digitado.clear();
-    return L"NOME";
+    terminouDigitar = false;
+    return ret;
+}
+
+bool InputBox::foiUsado() const {
+    return terminouDigitar;
 }
 
 bool InputBox::cabeDentro() const {

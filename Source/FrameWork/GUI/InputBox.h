@@ -20,6 +20,7 @@ public:
     void draw(sf::RenderTarget& target) override;
 
     std::wstring getString();
+    bool foiUsado() const override;
 private:
     bool cabeDentro() const;
 private:
@@ -28,7 +29,7 @@ private:
     std::shared_ptr<sf::Font> fonte;
     sf::Text textoNaTela;
 
-    bool selecionado;
+    bool selecionado, terminouDigitar;
     const int tamanhoMaximo;
 };
 

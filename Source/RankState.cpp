@@ -91,6 +91,16 @@ void RankState::update() {
 
     for (auto& it : gui)
         it->update(deltaTime);
+
+    if (dynamic_cast<InputBox*>(gui.back().get())) {
+        InputBox* entrada = dynamic_cast<InputBox*>(gui.back().get());
+
+        if (entrada->foiUsado()) {
+            std::wcout << entrada->getString() << std::endl;
+
+            gui.pop_back();
+        }
+    }
 }
 
 void RankState::draw() {
