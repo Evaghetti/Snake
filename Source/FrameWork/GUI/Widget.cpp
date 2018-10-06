@@ -9,7 +9,7 @@ void Widget::draw(sf::RenderTarget& target) {
     target.draw(*formato);
 }
 
-void Widget::update(const sf::Keyboard::Key keyPressed) {update();}
+void Widget::update(const sf::Keyboard::Key keyPressed, const wchar_t valor) {update();}
 void Widget::update(const sf::Vector2f& mousePosition) {update();}
 
 void Widget::setOutlineColor(const sf::Color& novaCor, float tamanho) {

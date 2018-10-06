@@ -49,7 +49,7 @@ void Button::update(const float deltaTime) {
     formato->setFillColor(corAtual);
 }
 
-void Button::update(const sf::Keyboard::Key keyPressed) {
+void Button::update(const sf::Keyboard::Key keyPressed, const wchar_t tecla) {
     used = hovering && keyPressed == sf::Keyboard::Enter;
 
     update();

@@ -19,7 +19,7 @@ tamanhoMaximo(tamanhoMaximo)
 
     selecionado = false;
 
-    textoNaTela.setString(std::string(tamanhoMaximo, 'A'));
+    textoNaTela.setString(std::wstring(tamanhoMaximo, 'A'));
     while (!cabeDentro()) {
         unsigned tamanhoAtual = textoNaTela.getCharacterSize();
 
@@ -35,9 +35,9 @@ void InputBox::update(const float deltaTime) {
     textoNaTela.setString(digitado.str());
 }
 
-void InputBox::update(const sf::Keyboard::Key keyPressed) {
-    if (selecionado) 
-        std::cout << "Você digitou algo!" << std::endl;
+void InputBox::update(const sf::Keyboard::Key keyPressed, const wchar_t valor) {
+    if (selecionado && valor != -1) 
+        std::wcout << "Você digitou " << valor << "!" << std::endl;
     
     update();
 }
@@ -55,9 +55,9 @@ void InputBox::draw(sf::RenderTarget& target) {
     target.draw(textoNaTela);
 }
 
-std::string InputBox::getString() {
-    digitado.str("");
-    return "NOME";
+std::wstring InputBox::getString() {
+    digitado.str(L"");
+    return L"NOME";
 }
 
 bool InputBox::cabeDentro() const {

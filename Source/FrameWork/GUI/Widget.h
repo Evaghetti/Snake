@@ -15,7 +15,7 @@ public:
 	virtual void draw(sf::RenderTarget& target);
 
 	virtual void update(const float deltaTime = 0.f) = 0;
-	virtual void update(const sf::Keyboard::Key keyPressed);
+	virtual void update(const sf::Keyboard::Key keyPressed, const wchar_t valor);
 	virtual void update(const sf::Vector2f& mousePosition);
 	
 	void setOutlineColor(const sf::Color& novaCor, float tamanho = 1.f);

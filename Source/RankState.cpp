@@ -67,9 +67,13 @@ void RankState::handleInput() {
             case sf::Event::Closed:
                 window.close();
                 break;
+            case sf::Event::TextEntered:
+                for (auto &it : gui)
+                    it->update(sf::Keyboard::Unknown, e.text.unicode);
+                break;
             case sf::Event::KeyPressed:
                 for (auto &it : gui)
-                    it->update(e.key.code);
+                    it->update(e.key.code, -1);
                 break;
             case sf::Event::MouseButtonPressed:
             case sf::Event::MouseMoved:
