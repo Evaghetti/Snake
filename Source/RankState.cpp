@@ -24,23 +24,12 @@ pontosPraAdd(pontos),
 adcionando(adcionar)
 
 {
-    auto temp = std::make_unique<TextBox>("Ranking", sf::FloatRect(240.f, -100.f, 100.f, 150.f));
-
-    temp->setFonte("Fonts/fonte.ttf");
-    temp->setTextSettings(sf::Color::White, 75, sf::Color::Black);
-
-    gui.emplace_back(std::move(temp));
-
-    temp = std::make_unique<TextBox>(lerArquivo(), sf::FloatRect(265.f, 100.f, 400.f, 380.f), false, .025f);
-    temp->setFonte("Fonts/fonte.ttf");
-    temp->setTextSettings(sf::Color::White, 30, sf::Color::Black);
-
-    gui.emplace_back(std::move(temp));
-    gui.emplace_back(std::make_unique<Button>("Voltar", sf::FloatRect(540.f, 430.f, 100.f, 50.f), sf::Color::Red, sf::Color(200, 0, 0)));
-
     if (adcionar) 
-        gui.emplace_back(std::make_unique<InputBox>(sf::FloatRect(200, 220, 220, 50), 10));
-
+        ajeitarEntrada();
+    else
+        ajeitarRank();
+    gui.emplace_back(std::make_unique<Button>("Voltar", sf::FloatRect(540.f, 430.f, 100.f, 50.f), sf::Color::Red, sf::Color(200, 0, 0)));    
+    
     float row = 0.f;
     for (unsigned i = 0; i < fundo.getVertexCount(); i += 4) {
         
@@ -93,16 +82,15 @@ void RankState::update() {
     for (auto& it : gui)
         it->update(deltaTime);
 
-    if (dynamic_cast<InputBox*>(gui.back().get())) {
-        InputBox* entrada = dynamic_cast<InputBox*>(gui.back().get());
-
+    if (InputBox* entrada = dynamic_cast<InputBox*>(gui.front().get())) {
         if (entrada->foiUsado()) {
             escrerArquivo(entrada->getString());
-            lerArquivo();
 
-            gui.pop_back();
+            gui.erase(gui.begin(), gui.begin() + 2);
         }
     }
+    else 
+        ajeitarRank();
 }
 
 void RankState::draw() {
@@ -110,12 +98,8 @@ void RankState::draw() {
 
     window.draw(fundo, texturaFundo.get());
 
-    if (gui.size() <= 3) {
-        for (auto& it : gui)
-            it->draw(window);
-    }
-    else
-        gui.back()->draw(window);
+    for (auto& it : gui)
+        it->draw(window);
     window.display();
 }
 
@@ -159,4 +143,29 @@ void RankState::escrerArquivo(const std::string& nome) const {
     arquivo.write(reinterpret_cast<const char*>(&pontosPraAdd), sizeof(pontosPraAdd));
 
     arquivo.close();
+}
+
+void RankState::ajeitarRank() {
+    auto temp = std::make_unique<TextBox>("Ranking", sf::FloatRect(240.f, -100.f, 100.f, 150.f));
+
+    temp->setFonte("Fonts/fonte.ttf");
+    temp->setTextSettings(sf::Color::White, 75, sf::Color::Black);
+
+    gui.insert(gui.begin(), std::move(temp));
+
+    temp = std::make_unique<TextBox>(lerArquivo(), sf::FloatRect(265.f, 100.f, 400.f, 380.f), false, .025f);
+    temp->setFonte("Fonts/fonte.ttf");
+    temp->setTextSettings(sf::Color::White, 30, sf::Color::Black);
+    
+    gui.insert(gui.begin(), std::move(temp));
+}
+
+void RankState::ajeitarEntrada() {
+    auto temp = std::make_unique<TextBox>("Digite seu nome", sf::FloatRect(120.f, 0.f, 340.f, 150.f));
+
+    temp->setFonte("Fonts/fonte.ttf");
+    temp->setTextSettings(sf::Color::White, 75, sf::Color::Black);
+
+    gui.insert(gui.begin(), std::move(temp));
+    gui.insert(gui.begin(),std::make_unique<InputBox>(sf::FloatRect(200, 220, 220, 50), 10));
 }

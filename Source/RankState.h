@@ -20,6 +20,8 @@ public:
 private:
     std::string lerArquivo() const;
     void escrerArquivo(const std::string& nome) const;
+    void ajeitarRank();
+    void ajeitarEntrada();
 private:
     std::vector<std::unique_ptr<Widget>> gui;
 
