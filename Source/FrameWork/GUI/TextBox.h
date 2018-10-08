@@ -31,7 +31,7 @@ private:
     std::shared_ptr<sf::Font> fonte;
 
     float tempoEspera, tempoPassado;
-    bool instantaneo, escrevendo;
+    bool instantaneo;
 };
 
 #endif

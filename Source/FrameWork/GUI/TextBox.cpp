@@ -38,7 +38,7 @@ void TextBox::update(const float deltaTime) {
     }
     else {
         tempoPassado += deltaTime;
-        if (tempoPassado >= tempoEspera && escrevendo) {
+        if (tempoPassado >= tempoEspera && palavras.size() > 0) {
             jaEscrito.setString(jaEscrito.getString() + palavras.front().front());
             
             palavras.front().erase(palavras.front().begin());
@@ -52,8 +52,6 @@ void TextBox::update(const float deltaTime) {
             tempoPassado = 0.f;
         }
     }
-
-    escrevendo = palavras.size() > 0u;
 }
 
 void TextBox::setFonte(std::string caminhoFonte, unsigned tamanho) {
@@ -72,10 +70,8 @@ void TextBox::setTextSettings(const sf::Color& novaCorFonte, unsigned tamanhoFon
 
 
 void TextBox::setMensagem(std::string mensagem) {
-    if (!escrevendo) {
-        jaEscrito.setString("");
-        split(mensagem);
-    }
+    jaEscrito.setString("");
+    split(mensagem);
 }
 
 void TextBox::split(std::string frase) {
